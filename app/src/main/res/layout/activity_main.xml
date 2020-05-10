@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.glovoapp.viewmodel.RestauranteViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrincipal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circulo"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorSecundario">
+
+                <TextView
+                    android:id="@+id/lblFiltrarTipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrincipal"
+                    android:text="Filtrar por tipo"
+                    android:onClick="@{(v)->model.clickVerCategorias(v)}"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="5dp" />
+
+
+                <TextView
+                    android:id="@+id/lblFiltrarVentas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrincipal"
+                    android:text="Filtrar por ventas"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="12dp" />
+                <TextView
+                    android:id="@+id/lblFiltrarValoracion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrincipal"
+                    android:text="Filtrar por valoración"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="20dp" />
+<!--
+                android:onClick="@{(v)->model.clickFiltroVentas(v)}"
+-->
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_restaurante_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{model.getRecyclerRestaurantesAdapter}"
+                android:scrollbars="vertical" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>
